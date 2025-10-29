@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 48px;
+    font-weight: 900;
+    background: linear-gradient(90deg, #e50914, #f40612);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 400;
+    color: #e5e5e5;
+    margin-top: 10px;
+}
+
+.main-content {
+    position: relative;
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 20px;
+}
+
+.loading.hidden {
+    display: none;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #e50914;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading p {
+    color: #999;
+    font-size: 16px;
+}
+
+.movies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.movie-card {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
+    z-index: 10;
+}
+
+.movie-poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+    background: #2a2a2a;
+}
+
+.date-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 15px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    opacity: 0.8;
+}
+
+
+.error-message {
+    text-align: center;
+    color: #e50914;
+    font-size: 18px;
+    padding: 40px;
+    background: rgba(229, 9, 20, 0.1);
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .movies-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 36px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .movies-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    body {
+        padding: 10px;
+    }
+}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e50914;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #f40612;
+}
